@@ -1,7 +1,6 @@
 import './App.css';
 import React, {useEffect, useState} from 'react';
 import CampaignList from './CampaignList';
-import Test from './Test'
 
 function App() {
 
