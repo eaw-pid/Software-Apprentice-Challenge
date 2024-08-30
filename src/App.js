@@ -2,7 +2,6 @@ import './App.css';
 import React, {useEffect, useState} from 'react';
 import CampaignList from './CampaignList';
 import Test from './Test'
-// import CampaignFilter from './CampaignFilter';
 
 function App() {
 
@@ -26,9 +25,8 @@ function App() {
   return (
     <div className="main-page">
       <h1 className="text-4xl font-bold mb-4">Campaigns</h1>
-          {/* <CampaignFilter filterFunction={filterFunction}/> */}
           <CampaignList ads={ads} />
-          <Test/>
+       
     </div>
   );
 }

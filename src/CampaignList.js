@@ -74,7 +74,6 @@ function CampaignList({ads}) {
                 <p><strong>Spend:</strong> ${cost}</p>
                 <p><strong>Impressions:</strong> {impressions}</p>
                 <p><strong>Clicks:</strong> {postClicks}</p>
-                {/* <p><strong>Platform: </strong>{platform}</p> */}
                 {results ?
                 
                 <p><strong>Results: </strong>{results}</p>
@@ -115,10 +114,3 @@ function CampaignList({ads}) {
 export default CampaignList
 
 
-
-   {/* <h3 className="text-3xl font-bold ">Google Analytics</h3>
-            <div className="container mx-auto px-4 py-8">
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-                {renderCampaigns('google_analytics')}        
-              </div>
-            </div> */}
