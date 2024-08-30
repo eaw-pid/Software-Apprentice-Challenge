@@ -36,26 +36,37 @@ function CampaignList({ads}) {
 
         if (search.length > 0) {
             campaignsToRender  = campaignsToRender.filter((campaign) => {
-            const campaignName = campaign.campaign || campaign.campaign_name || campaign.utm_campaign;
+            const campaignName = campaign.campaign || campaign.campaign_name;
             return campaignName.toLowerCase().includes(search.toLowerCase())
           })
         }
 
-        console.log(search)
         return campaignsToRender.map((campaign, index) => {
 
-          const campaignName = campaign.campaign_name || campaign.campaign || campaign.utm_campaign;
-          const mediaBuy = campaign.media_buy_name || campaign.ad_group || campaign.ad_squad_name || campaign.utm_medium;
-          const adName = campaign.ad_name || campaign.image_name || campaign.creative_name || campaign.utm_content;
+          const campaignName = campaign.campaign_name || campaign.campaign;
+          const mediaBuy = campaign.media_buy_name || campaign.ad_group || campaign.ad_squad_name;
+          const adName = campaign.ad_name || campaign.image_name || campaign.creative_name;
           const cost = campaign.spend || campaign.cost;
           const impressions = campaign.impressions
           const postClicks = campaign.clicks || campaign.post_clicks;
+          let results = ""
+
+            // console.log(ads['google_analytics'])
+            const googleAnalytics=ads['google_analytics']
+            for (let ad of googleAnalytics) {
+              if (ad.utm_campaign === campaignName && ad.utm_medium === mediaBuy && ad.utm_content === adName) {
+                results = ad.results
+                console.log(results)
+              }
+            }
+
+          
 
           return (
          
       
 
-              <div className="max-w-sm rounded overflow-hidden shadow-lg" key={index} className="campaign-card">
+              <div className="max-w-sm rounded overflow-hidden shadow-lg" key={index} >
                 <div className="px-6 py-4">
                 <h3><strong>Campaign: </strong>{campaignName}</h3>
                 <p><strong>Adset: </strong> {mediaBuy}</p>
@@ -64,9 +75,9 @@ function CampaignList({ads}) {
                 <p><strong>Impressions:</strong> {impressions}</p>
                 <p><strong>Clicks:</strong> {postClicks}</p>
                 {/* <p><strong>Platform: </strong>{platform}</p> */}
-                {campaign.results ?
+                {results ?
                 
-                <p><strong>Results: </strong></p>
+                <p><strong>Results: </strong>{results}</p>
                 : null }
                 </div>
               </div>
